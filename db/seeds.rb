@@ -5,3 +5,36 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+puts "destroying db"
+User.destroy_all
+Island.destroy_all
+
+puts "generating db"
+number_of_islands = 5
+user_array = []
+
+(number_of_islands * 2).times do
+  user_model = User.create!(
+    name: Faker::FunnyName.two_word_name,
+    phone: Faker::PhoneNumber.cell_phone,
+    email: Faker::Internet.email,
+    password: "123456"
+  )
+  user_array.push(user_model.id) if user_array.size < number_of_islands
+end
+
+i = 0
+
+number_of_islands.times do
+  Island.create!(
+    name: Faker::Space.star_cluster,
+    description: Faker::Lorem.paragraph,
+    price: rand(1_000_000..5_000_000),
+    location: Faker::Address.country,
+    user_id: user_array[i]
+  )
+  i += 1
+end
+
+puts "success!"
