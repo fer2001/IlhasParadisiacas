@@ -1,5 +1,6 @@
 class IslandsController < ApplicationController
   before_action :set_island, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @islands = policy_scope(Island)
@@ -12,8 +13,6 @@ class IslandsController < ApplicationController
   def new
     @island = Island.new
     skip_authorization
-    # if user tá logado?
-    # else mandar fazer login
   end
 
   def create
@@ -49,8 +48,3 @@ class IslandsController < ApplicationController
     params.require(:island).permit(:name, :description, :price, :location)
   end
 end
-
-
-# 1 - como criar uma pagina de ""minhas ilhas" sendo que o show só mostra ilhas de outros usuários
-# 2 - como checar se o usuário está logado para poder criar uma ilha
-# 3 - autorize não está funcionando direito 

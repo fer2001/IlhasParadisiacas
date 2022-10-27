@@ -8,13 +8,9 @@
 <div class="container mb-5">
   <div class="container mb-5 d-flex justify-content-between my-4">
     <div>
-      <% if #usuário existe e está logado vai pro show de orders %>
         <button type="button" class="btn btn-flat" id="new_movie" data-bs-toggle="modal" data-bs-target="#new_movie_modal">
           comprar ilha
         </button>
-      <% else #não logado vai pra pagina de login/registro %>
-
-      <% end %>
       <% if policy(@island).edit? %>
         <%= link_to "Edit this island", edit_island_path(@island) %> |
       <% end %>

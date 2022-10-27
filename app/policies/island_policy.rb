@@ -1,4 +1,16 @@
 class IslandPolicy < ApplicationPolicy
+  def index?
+    true
+  end
+
+  def show?
+    true
+  end
+
+  def create?
+    true
+  end
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
@@ -7,13 +19,11 @@ class IslandPolicy < ApplicationPolicy
     def resolve
       scope.where.not(user: user)
     end
+  end
 
-    def show?
-      true
+  class MyIslandsScope < Scope
+    def resolve
+      scope.where(user: user)
     end
-
-    def create?
-      true
-    end 
   end
 end
