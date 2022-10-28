@@ -27,15 +27,22 @@ class IslandsController < ApplicationController
   end
 
   def edit
-    authorize @restaurant
+    authorize @island
   end
 
   def update
-    authorize @restaurant
+    if @island.update(island_params)
+      redirect_to island_path(@island)
+    else
+      render :new, status: :unprocessable_entity
+    end
+    authorize @island
   end
 
   def destroy
-    authorize @restaurant
+    @island.destroy
+    redirect_to profile_islands_path, status: :see_other
+    authorize @island
   end
 
   private

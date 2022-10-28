@@ -1,0 +1,15 @@
+<div class="container py-5 mt-5">
+  <div class="d-flex align-items-center">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <h3>Update a island</h3>
+        <%= simple_form_for @island do |f| %>
+          <%= f.input :name, placeholder: "Island name" %>
+          <%= f.input :description %>
+          <%= f.input :price %>
+          <%= f.submit class: 'btn btn-flat' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
