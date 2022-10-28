@@ -19,7 +19,7 @@ user_array = []
     name: Faker::FunnyName.two_word_name,
     phone: Faker::PhoneNumber.cell_phone,
     email: Faker::Internet.email,
-    password: "123456"
+    password: "123123,"
   )
   user_array.push(user_model.id) if user_array.size < number_of_islands
 end
@@ -30,8 +30,9 @@ number_of_islands.times do
   Island.create!(
     name: Faker::Space.star_cluster,
     description: Faker::Lorem.paragraph,
-    price: rand(1_000_000..5_000_000),
+    price: rand(50_000..1_000_000),
     location: Faker::Address.country,
+    rating: rand(0..5),
     user_id: user_array[i]
   )
   i += 1
