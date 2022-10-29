@@ -9,6 +9,5 @@ import { DateRangePicker } from 'vanillajs-datepicker';
 const elem = document.getElementById('rent');
 
 const rangepicker = new DateRangePicker(elem, {
-  format: "dd/mm/yyyy",
-  datesDisabled: []
+  format: "dd/mm/yyyy"
 });
