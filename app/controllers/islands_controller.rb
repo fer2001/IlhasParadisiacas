@@ -7,6 +7,14 @@ class IslandsController < ApplicationController
   end
 
   def show
+    @markers = [
+      {
+        lat: @island.latitude,
+        lng: @island.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { island: @island }),
+        image_url: helpers.asset_url("noun-island-1442323.png")
+      }
+    ]
     skip_authorization
   end
 
