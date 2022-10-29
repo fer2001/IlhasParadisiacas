@@ -54,6 +54,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "devise"
 gem "faker"
 gem "pundit"
+gem "geocoder"
 gem "pry-byebug"
 
 group :development, :test do

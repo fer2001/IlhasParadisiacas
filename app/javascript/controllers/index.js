@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import RentCalculatorController from "./rent_calculator_controller"
 application.register("rent-calculator", RentCalculatorController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)
