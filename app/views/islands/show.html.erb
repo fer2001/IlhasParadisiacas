@@ -28,12 +28,12 @@
           <%# adicionar uma foto de perfil para o usuário %>
         </div>
 
-        <div class="col-sm-4">
+        <div class="col-sm-4 mt-5">
           <div class="card shadow-sm">
             <div class="card-body">
               <h5 class="card-title">R$ <%= @island.price %> per night</h5>
               <p class="card-text">calendário</p>
-              <a href="#" class="btn btn-primary">Rent <%= @island.name %></a>
+              <%= link_to "Rent #{@island.name}", new_island_order_path(@island), class: "btn btn-primary" %>
             </div>
           </div>
         </div>
