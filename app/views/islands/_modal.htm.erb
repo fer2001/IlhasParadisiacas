@@ -1,0 +1,25 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="edit_modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit <%= @island.name %> informations</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <%= simple_form_for @island do |f| %>
+        <div class="modal-body">
+          <%= f.input :name, placeholder: "New name" %>
+          <%= f.input :description %>
+          <%= f.input :price %>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit 'Done', class: 'btn btn-primary' %>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

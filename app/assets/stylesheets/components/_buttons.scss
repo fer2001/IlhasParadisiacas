@@ -39,3 +39,31 @@
   background: linear-gradient(#147EFF, #0F67DA);
   color: white;
 }
+
+.btn-helper {
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.btn-helper:hover {
+  opacity: 1;
+  color: white;
+}
+
+.btn-delete {
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.btn-delete:hover {
+  opacity: 1;
+  color: rgb(192, 22, 22);
+}
