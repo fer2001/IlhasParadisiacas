@@ -56,10 +56,18 @@ class IslandsController < ApplicationController
   private
 
   def set_island
-    @island = Island.find(params[:id])
+    if island_exists?
+      @island = Island.find(params[:id])
+    else
+      redirect_to islands_path, status: :see_other
+    end
   end
 
   def island_params
     params.require(:island).permit(:name, :description, :price, :location)
+  end
+
+  def island_exists?
+    Island.all.any? { |island| island.id == params[:id].to_i }
   end
 end
