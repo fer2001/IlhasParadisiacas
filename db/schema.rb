@@ -52,6 +52,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_29_190545) do
     t.datetime "updated_at", null: false
     t.string "island_pic"
     t.integer "rating"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_islands_on_user_id"
   end
 

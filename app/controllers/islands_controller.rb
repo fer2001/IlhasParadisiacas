@@ -7,6 +7,14 @@ class IslandsController < ApplicationController
   end
 
   def show
+    @markers = [
+      {
+        lat: @island.latitude,
+        lng: @island.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { island: @island }),
+        image_url: helpers.asset_url("noun-island-1442323.png")
+      }
+    ]
     skip_authorization
   end
 
@@ -48,10 +56,18 @@ class IslandsController < ApplicationController
   private
 
   def set_island
-    @island = Island.find(params[:id])
+    if island_exists?
+      @island = Island.find(params[:id])
+    else
+      redirect_to islands_path, status: :see_other
+    end
   end
 
   def island_params
     params.require(:island).permit(:name, :description, :price, :location, :photo)
+  end
+
+  def island_exists?
+    Island.all.any? { |island| island.id == params[:id].to_i }
   end
 end

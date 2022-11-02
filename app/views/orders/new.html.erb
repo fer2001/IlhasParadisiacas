@@ -1,14 +1,47 @@
 <div class="container">
 
-  <h1>Rent island</h1>
+  <div class="card mx-auto mt-5 p-3" style="width: 30rem; border-radius: 10px;">
+    <h1 class="text-center mb-4">Rent island</h1>
+    <div id="rent">
+      <form action=<%= island_orders_path %> method="post" >
 
-  <div id="rent">
-    <form action=<%= island_orders_path %> method="post" >
-      <input type="text" name="checkin" required autocomplete="off">
-      <span>to</span>
-      <input type="text" name="checkout" required autocomplete="off">
-      <input type="submit" >
-    </form>
+        <div class="w-75 mx-auto">
+            <div class="input-group">
+              <span class="input-group-text" id="start-date-label">From:</span>
+              <input type="text" id="check-in" name="checkin" class="form-control" required autocomplete="off" aria-label="start-date" aria-described-by="start-date-label" placeholder="<%= Date.today.strftime("%d/%m/%Y") %>">
+            </div>
+            <div class="input-group mt-3">
+              <span class="input-group-text" id="start-date-label">To:</span>
+              <input type="text" id="check-out"  name="checkout" class="form-control" required autocomplete="off" aria-label="start-date" aria-described-by="start-date-label" placeholder="<%= (Date.today + 30).strftime("%d/%m/%Y")  %>">
+            </div>
+
+            <div class="text-center">
+              <div data-controller="rent-calculator" data-action="click->rent-calculator#applyChanges" class="btn btn-outline-secondary mt-4">Calculate</div>
+            </div>
+
+            <table class="table mt-3">
+              <tbody>
+                <tr>
+                  <th scope="row">Price per day</th>
+                  <td id="price-per-day" data-price="<%= @island.price %>"><%= number_to_currency(@island.price, unit: 'R$', separator: ',', delimiter: '.')%></td>
+                </tr>
+                <tr>
+                  <th scope="row">Number of days</th>
+                  <td id="number-of-days"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Total</th>
+                  <td id="total-price"></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+
+        <div class="text-center">
+          <input id="submit-btn" type="submit" class="btn btn-primary mt-3 disabled">
+        </div>
+      </form>
+    </div>
   </div>
-
 </div>
