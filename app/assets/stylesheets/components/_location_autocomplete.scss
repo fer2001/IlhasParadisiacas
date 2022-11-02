@@ -1,0 +1,17 @@
+.mapboxgl-ctrl-geocoder--input {
+  max-width: none !important;
+  width: 100% !important;
+  border: 1px solid lightgray !important;
+  box-shadow: none !important;
+  background-color: #F4F4F4 !important;
+  border-radius: 2px;
+  height: 40px;
+}
+
+.mapboxgl-ctrl-geocoder--pin-right {
+  display: none;
+}
+
+.mapboxgl-ctrl-geocoder--icon {
+  display: none;
+}
