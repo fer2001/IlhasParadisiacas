@@ -7,7 +7,10 @@
           <%= f.input :name, placeholder: "Island name" %>
           <%= f.input :description %>
           <%= f.input :price %>
-          <%= f.input :location %>
+          <%= f.input :location,
+                      input_html: {data: {location_autocomplete_target: "location"}, class: "d-none"},
+                      wrapper_html: {data: {controller: "location-autocomplete", location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+          %>
           <%= f.submit class: 'btn btn-flat' %>
         <% end %>
       </div>
