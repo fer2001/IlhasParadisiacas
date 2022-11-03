@@ -1,6 +1,5 @@
 <div class="container mb-5">
-  <div class="banner mt-4" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('http://cdn.cnn.com/cnnnext/dam/assets/180219103122-zanzibar-and-its-islands---mnemba-a-view-from-the-sky-mnemba-island-lodge.jpg');">
-    <%# mudar a foto da ilha no banner para a foto do card %>
+  <div class="banner mt-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @island.photo.key.nil? ? "http://cdn.cnn.com/cnnnext/dam/assets/180219103122-zanzibar-and-its-islands---mnemba-a-view-from-the-sky-mnemba-island-lodge.jpg" : @island.photo.key %>')">
     <div class="island-infos">
       <h1><%= @island.name %></h1>
       <p>Location: <%=@island.location %></p>

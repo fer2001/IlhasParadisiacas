@@ -10,7 +10,11 @@
       <div class="co-12 col-sm-6 col-md-4 mb-3">
         <%= link_to island_path(island), class: "text-decoration-none" do %>
           <div class="card-trip" data-aos="zoom-in">
-            <img src="http://cdn.cnn.com/cnnnext/dam/assets/180219103122-zanzibar-and-its-islands---mnemba-a-view-from-the-sky-mnemba-island-lodge.jpg" />
+            <% if island.photo.key.nil? %>
+              <img src="http://cdn.cnn.com/cnnnext/dam/assets/180219103122-zanzibar-and-its-islands---mnemba-a-view-from-the-sky-mnemba-island-lodge.jpg" />
+            <% else %>
+              <%= cl_image_tag island.photo.key %>
+            <% end %>
             <div class="card-trip-infos">
               <div>
                 <h2><%= island.name %></h2>
