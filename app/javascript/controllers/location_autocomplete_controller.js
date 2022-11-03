@@ -18,11 +18,11 @@ export default class extends Controller {
   }
 
   #setInputValue(event) {
-    this.addressTarget.value = event.result["place_name"]
+    this.locationTarget.value = event.result["place_name"]
   }
 
   #clearInputValue() {
-    this.addressTarget.value = ""
+    this.locationTarget.value = ""
   }
 
   disconnect() {
