@@ -3,7 +3,11 @@ class IslandsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @islands = policy_scope(Island)
+    if params[:query].present?
+      @islands = policy_scope(Island).search_by_name_and_location(params[:query])
+    else
+      @islands = policy_scope(Island)
+    end
   end
 
   def show
