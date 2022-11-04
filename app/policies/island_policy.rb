@@ -1,4 +1,5 @@
 class IslandPolicy < ApplicationPolicy
+  
   def index?
     true
   end
