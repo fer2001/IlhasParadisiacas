@@ -2,6 +2,18 @@
 <div class="conteiner mx-4 py-5">
   <h3 class="mb-3">Island showcase</h3>
 
+
+<%= form_with url: islands_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a island"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+</div>
+
   <div class="row">
     <% @islands.each do | island | %>
       <div class="co-12 col-sm-6 col-md-4 mb-3">
