@@ -12,7 +12,10 @@
                       wrapper_html: {data: {controller: "location-autocomplete", location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
           %>
           <%= f.input :photos, as: :file, input_html: { multiple: true}  %>
-          <%= f.submit class: 'btn btn-flat' %>
+          <%= f.submit class: 'btn btn-flat mb-4' %>
+        <% end %>
+        <%= link_to :back, class: "text-danger" do %>
+          <i class="fa-solid fa-chevron-left"><span class = "h5">Cancel</span></i>
         <% end %>
       </div>
     </div>
