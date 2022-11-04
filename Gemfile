@@ -56,6 +56,7 @@ gem "faker"
 gem "pundit"
 gem "geocoder"
 gem "pry-byebug"
+gem "pg_search"
 gem "cloudinary"
 
 group :development, :test do
