@@ -1,4 +1,14 @@
 class OrdersController < ApplicationController
+
+  def index
+    @orders = policy_scope(Order)
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    authorize @user
+  end
+
   def new
     @order = Order.new
     @island = Island.find(params[:island_id])

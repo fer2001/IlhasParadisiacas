@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :islands, dependent: :destroy
   has_many :orders
+  has_one_attached :photo
 
   validates :name, :phone, :email, presence: true
   validates :email, uniqueness: true
