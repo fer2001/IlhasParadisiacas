@@ -6,9 +6,11 @@
   font-weight: lighter;
   opacity: 0.6;
   transition: opacity 0.3s ease;
+  text-decoration: none;
 }
 
 .btn-ghost:hover {
+  color: #1f1f1f;
   opacity: 1;
 }
 

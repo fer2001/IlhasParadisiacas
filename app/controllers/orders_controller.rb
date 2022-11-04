@@ -1,4 +1,14 @@
 class OrdersController < ApplicationController
+
+  def index
+    @orders = policy_scope(Order)
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    authorize @user
+  end
+
   def new
     @order = Order.new
     @island = Island.find(params[:island_id])
@@ -14,5 +24,12 @@ class OrdersController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+
+  def destroy
+    @order.destroy
+    redirect_to profile_orders_path, status: :see_other
+    authorize @order
   end
 end

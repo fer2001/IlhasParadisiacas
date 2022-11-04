@@ -2,25 +2,14 @@
 <div class="conteiner mx-4 py-5">
   <h3 class="mb-3">Islands showcase</h3>
 
-
-<%= form_with url: islands_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a island"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-
-</div>
-
   <div class="row">
     <% @islands.each do | island | %>
+      <% user = User.find(island.user_id) %>
       <div class="co-12 col-sm-6 col-md-4 mb-3">
         <%= link_to island_path(island), class: "text-decoration-none" do %>
           <div class="card-trip w-100" data-aos="zoom-in">
             <% if island.photos.attached? %>
-              <%= cl_image_tag island.photos.key.first %>
+              <%= cl_image_tag island.photos.first.key %>
             <% else %>
               <%= image_tag "unsplash.jpg" %>
             <% end %>
@@ -30,7 +19,11 @@
                 <p><%= island.location %></p>
               </div>
               <h2 class="card-trip-pricing">R$ <%= island.price %></h2>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              <% if user.photo.attached? %>
+                <%= cl_image_tag user.photo.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}], class: "card-trip-user avatar-bordered" %>
+              <% else %>
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="card-trip-user avatar-bordered" />
+              <% end %>
             </div>
           </div>
         <% end %>
@@ -38,6 +31,10 @@
     <% end %>
   </div>
 </div>
+
+
+
+
 
 
   <%# <div class="card-trip" data-aos="zoom-in">

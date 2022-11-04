@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   resources :islands do
     resources :orders, only: %i[new create]
   end
-  resources :orders, only: :destroy
+  resources :orders, only: %i[index show destroy]
   namespace :profile do
     resources :islands, only: :index
   end
+  resources :pages, only: %i[show edit update destroy]
 end
