@@ -68,7 +68,7 @@ class IslandsController < ApplicationController
   end
 
   def island_params
-    params.require(:island).permit(:name, :description, :price, :location, :photo)
+    params.require(:island).permit(:name, :description, :price, :location, photos: [])
   end
 
   def island_exists?
