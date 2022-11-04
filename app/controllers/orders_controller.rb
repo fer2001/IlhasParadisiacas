@@ -25,4 +25,11 @@ class OrdersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+
+  def destroy
+    @order.destroy
+    redirect_to profile_orders_path, status: :see_other
+    authorize @order
+  end
 end
