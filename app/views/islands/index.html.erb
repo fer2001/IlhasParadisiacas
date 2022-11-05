@@ -23,7 +23,7 @@
                 </div>
                 <p><%= island.location %></p>
               </div>
-              <h2 class="card-trip-pricing">R$ <%= island.price %></h2>
+              <h2 class="card-trip-pricing"><%= number_to_currency(island.price, unit: 'R$', separator: ',', delimiter: '.', format: "%u %n") %></h2>
               <% if user.photo.attached? %>
                 <%= cl_image_tag user.photo.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}], class: "card-trip-user avatar-bordered" %>
               <% else %>

@@ -79,7 +79,7 @@
         <div class="col-sm-6 mt-5">
           <div class="card shadow-sm">
             <div class="card-body">
-              <h5 class="card-title"><strong>R$ <%= @island.price %></strong> night</h5>
+              <h5 class="card-title"><strong><%= number_to_currency(@island.price, unit: 'R$', separator: ',', delimiter: '.', format: "%u %n") %></strong> night</h5>
               <p class="card-text">calendário</p>
               <%= link_to "Rent", new_island_order_path(@island), class: "btn btn-primary" %>
             </div>
