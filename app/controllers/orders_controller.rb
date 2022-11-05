@@ -1,11 +1,12 @@
 class OrdersController < ApplicationController
+  before_action :set_order, only: %i[show destroy]
 
   def index
     @orders = policy_scope(Order)
   end
 
   def show
-    @order = Order.find(params[:id])
+    # @order = Order.find(params[:id])
     authorize @user
   end
 
@@ -26,10 +27,16 @@ class OrdersController < ApplicationController
     end
   end
 
-
   def destroy
-    @order.destroy
-    redirect_to profile_orders_path, status: :see_other
+    # @order = Order.find(params[:id])
+    @order.delete
+    redirect_to orders_path, status: :see_other
     authorize @order
+  end
+
+  private
+
+  def set_order
+    @order = Order.find(params[:id])
   end
 end
