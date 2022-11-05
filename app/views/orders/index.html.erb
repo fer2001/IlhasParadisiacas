@@ -29,7 +29,7 @@
                   <%= image_tag "unsplash.jpg" %>
                 <% end %>
                 <div class="card-product-infos">
-                  <h2>Island: <%= island.name %></h2>
+                  <h2>Island: <%= link_to island.name, island_path(island), class: "text-decoration-none" %></h2>
                   <p><strong>Your host:</strong> <%= user.name %></p>
                   <p><strong>Stay time:</strong> <%= order.checkout.day - order.checkin.day %> days</p>
                   <p><strong>Total:</strong> R$ <%= (order.checkout.day - order.checkin.day) * island.price %></p>
