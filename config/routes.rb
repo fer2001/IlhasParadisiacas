@@ -14,5 +14,4 @@ Rails.application.routes.draw do
   namespace :profile do
     resources :islands, only: :index
   end
-  resources :pages, only: %i[show edit update destroy]
 end
