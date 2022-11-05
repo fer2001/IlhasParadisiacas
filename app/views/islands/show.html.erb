@@ -102,7 +102,7 @@
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
-
+  <hr>
   <% if user_signed_in? && @island.user != current_user %>
     <div class="row">
       <div class="col-12 col-sm-6 mt-5">
@@ -115,18 +115,35 @@
           <% end %>
         </div>
       </div>
-
       <div class="col-12 col-sm-6 mt-5">
+        <div class="overflow-auto w-100" style="height: 290px">
+          <% @island.reviews.each do | review | %>
+            <div>
+              <% review.rating.times do %>
+                <i class="fas fa-star star-yellow"></i>
+              <% end %>
+              <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago - by: <%= review.user.name %></em></small>
+              <p class="mb-0"><%= review.comment %></p>
+            </div>
+            <hr>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="col-12 mt-5">
+      <div class="overflow-auto w-100" style="height: 290px">
         <% @island.reviews.each do | review | %>
           <div>
             <% review.rating.times do %>
               <i class="fas fa-star star-yellow"></i>
             <% end %>
-            <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
+            <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago - by: <%= review.user.name %></em></small>
             <p class="mb-0"><%= review.comment %></p>
           </div>
           <hr>
         <% end %>
+        </div>
       </div>
     </div>
   <% end %>
