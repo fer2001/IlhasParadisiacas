@@ -11,7 +11,7 @@
 
     <div class="search-bar">
       <%= form_with url: islands_path, method: :get, class: "input-group" do %>
-        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a island" %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find an island" %>
         <%= submit_tag "Search", class: "btn btn-outline-secondary" %>
       <% end %>
     </div>
