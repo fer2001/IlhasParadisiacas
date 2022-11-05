@@ -35,7 +35,7 @@
                   <p><strong>Total:</strong> R$ <%= (order.checkout.day - order.checkin.day) * island.price %></p>
                   <div class="forget">
                     <%= link_to @order, "delete reccord", class: "text-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this reccord?" } %>
-                    <%# consertar o botão de delete %>
+                    <%# consertar o botão de delete! %>
                   </div>
                 </div>
               </div>
