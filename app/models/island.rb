@@ -1,6 +1,7 @@
 class Island < ApplicationRecord
   belongs_to :user
-  has_many :orders
+  has_many :orders, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many_attached :photos
   geocoded_by :location
 

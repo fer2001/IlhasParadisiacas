@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_29_190545) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_05_003426) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,7 +51,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_29_190545) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "island_pic"
-    t.integer "rating"
     t.float "latitude"
     t.float "longitude"
     t.index ["user_id"], name: "index_islands_on_user_id"
@@ -66,6 +65,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_29_190545) do
     t.date "checkout"
     t.index ["island_id"], name: "index_orders_on_island_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "comment"
+    t.integer "rating"
+    t.bigint "island_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["island_id"], name: "index_reviews_on_island_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -88,4 +98,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_29_190545) do
   add_foreign_key "islands", "users"
   add_foreign_key "orders", "islands"
   add_foreign_key "orders", "users"
+  add_foreign_key "reviews", "islands"
+  add_foreign_key "reviews", "users"
 end

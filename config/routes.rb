@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :islands do
     resources :orders, only: %i[new create]
+    resources :reviews, only: %i[new create]
   end
   resources :orders, only: %i[index show destroy]
+  resources :reviews, only: :destroy
   namespace :profile do
     resources :islands, only: :index
   end

@@ -32,7 +32,6 @@ number_of_islands.times do
     description: Faker::Lorem.paragraph,
     price: rand(50_000..1_000_000),
     location: Faker::Address.country,
-    rating: rand(0..5),
     user_id: user_array[i]
   )
   i += 1

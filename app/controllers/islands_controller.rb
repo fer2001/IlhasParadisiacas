@@ -11,6 +11,7 @@ class IslandsController < ApplicationController
   end
 
   def show
+    @review = Review.new(island: @island)
     @markers = [
       {
         lat: @island.latitude,
