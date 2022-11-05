@@ -11,6 +11,7 @@ class IslandsController < ApplicationController
   end
 
   def show
+    p @island
     @review = Review.new(island: @island)
     @markers = [
       {
@@ -53,6 +54,7 @@ class IslandsController < ApplicationController
   end
 
   def destroy
+    p"entrnado"
     @island.destroy
     redirect_to profile_islands_path, status: :see_other
     authorize @island
