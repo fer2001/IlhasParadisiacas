@@ -117,6 +117,7 @@
         </div>
       </div>
       <div class="col-12 col-sm-6 mt-5">
+        <span class="mt-4 d-block"><small><em class="text-muted"><%= "This island does not have any reviews yet!" if @island.reviews.empty? %></em></small></span>
         <div class="overflow-auto w-100" style="height: 290px">
           <% @island.reviews.each do | review | %>
             <div>
@@ -133,6 +134,7 @@
     </div>
   <% else %>
     <div class="col-12 mt-5">
+      <span class="mt-4 d-block"><small><em class="text-muted"><%= "This island does not have any reviews yet!" if @island.reviews.empty? %></em></small></span>
       <div class="overflow-auto w-100" style="height: 290px">
         <% @island.reviews.each do | review | %>
           <div>
